@@ -51,7 +51,7 @@
 </head>
 
 <body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
-   <audio id="myAudio" src="https://thiepcuoi-six.vercel.app/nhac.mp3" loop hidden></audio>
+<audio src="/nhac.mp3" autoplay loop controls hidden></audio>
 	<!-- LOADER -->
 	<div id="preloader">
 		<div class="preloader pulse">
@@ -574,24 +574,6 @@
 	<script src="js/form-validator.min.js"></script>
 	<script src="js/contact-form-script.js"></script>
 	<script src="js/custom.js"></script>
-	 <script>
-        var myAudio = document.getElementById("myAudio");
-        var isPlaying = false; // Biến để theo dõi trạng thái phát nhạc
-
-        function togglePlayPause() {
-            if (isPlaying) {
-                myAudio.pause();
-                isPlaying = false;
-            } else {
-                // .play() có thể trả về Promise, dùng .catch để xử lý lỗi nếu vẫn bị chặn
-                myAudio.play().catch(function(error) {
-                    console.log("Không thể tự động phát, người dùng cần tương tác thêm:", error);
-                    // Bạn có thể thông báo cho người dùng ở đây nếu muốn
-                });
-                isPlaying = true;
-            }
-        }
-    </script>
 </body>
 
 </html>
