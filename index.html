@@ -51,10 +51,7 @@
 </head>
 
 <body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
-	<audio id="123" autoplay="" preload="auto" loop="">
-  <source src="https://www.dropbox.com/scl/fi/npl919xx2edzgxl3ba7np/ytmp3free.cc_em-dong-y-i-do-duc-phuc-x-911-x-khac-hung-official-music-video-valentine-2023-youtubemp3free.org-mp3cut.net-_out.mp3?rlkey=ixwf520pz6evxa3nz48odi3rn&amp;st=xmn9p1dz&amp;&amp;raw=1" type="audio/mp3">
-</audio>
-
+<audio id="myAudio" src="nhac.mp3"   hidden></audio> 
 	<!-- LOADER -->
 	<div id="preloader">
 		<div class="preloader pulse">
@@ -577,6 +574,51 @@
 	<script src="js/form-validator.min.js"></script>
 	<script src="js/contact-form-script.js"></script>
 	<script src="js/custom.js"></script>
+	 <script>
+        
+    
+
+     $(document).ready(function () {
+    var myAudio = document.getElementById("myAudio");
+    myAudio.muted = true;
+  var hasInteracted = false;
+
+    $(document).one("click", function () {
+        myAudio.muted = false;
+		    myAudio.play();
+			hasInteracted=true;
+			   
+    });
+	 
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const myAudio = document.getElementById("myAudio");
+    let hasInteracted = false;
+
+    function tryPlayAudio(event) {
+        if (hasInteracted) return;
+        hasInteracted = true;
+
+        // Nếu bạn cần preventDefault thì làm ở đây (đã hợp lệ vì passive = false)
+        if (event.cancelable) {
+            event.preventDefault();
+        }
+
+        myAudio.play().then(() => {
+            console.log("Nhạc đã phát thành công");
+        }).catch(err => {
+            console.error("Không thể phát nhạc:", err);
+        });
+
+        window.removeEventListener("wheel", tryPlayAudio, { passive: false });
+        window.removeEventListener("touchstart", tryPlayAudio, { passive: false });
+    }
+
+    window.addEventListener("wheel", tryPlayAudio, { passive: false });
+    window.addEventListener("touchstart", tryPlayAudio, { passive: false });
+});
+
+    </script>
 </body>
 
 </html>
