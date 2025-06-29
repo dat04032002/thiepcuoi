@@ -28,6 +28,7 @@
 	<link rel="stylesheet" href="css/responsive.css">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="css/custom.css">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
 	<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -46,6 +47,72 @@
 		h1,h2,p {
 			font-family: 'Times New Roman', Times, serif !important;
 		}
+		.pogoSlider-slide .lbox-caption {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 32px 0;
+}
+
+.pogoSlider-slide .lbox-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 180px;
+}
+
+.pogoSlider-slide img {
+  max-width: 180px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px #dedede;
+}
+
+/* Font cho tên cô dâu, chú rể */
+.pogoSlider-slide .big-name {
+  font-family: 'Dancing Script', 'Pacifico', 'Segoe Script', cursive;
+  font-size: 28px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+/* Tên phụ huynh, label... */
+.pogoSlider-slide .family-label,
+.pogoSlider-slide .parent-names {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.pogoSlider-slide .role-label {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+/* Responsive mobile: Ảnh và text xếp dọc */
+@media (max-width: 700px) {
+  .pogoSlider-slide .lbox-caption {
+    flex-direction: column !important;
+    gap: 0;
+    padding: 12px 0;
+  }
+  .pogoSlider-slide .lbox-details {
+    min-width: unset;
+    align-items: center;
+    text-align: center;
+  }
+  .pogoSlider-slide img {
+    max-width: 85vw;
+    margin-bottom: 12px;
+  }
+  .pogoSlider-slide .big-name {
+    font-size: 24px;
+  }
+}
+
 	</style>
 
 </head>
