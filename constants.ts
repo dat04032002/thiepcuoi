@@ -1,12 +1,12 @@
 import { WeddingData } from './types';
 
 // Images
-const GROOM_IMG = "./image/chure.jpg";
-const BRIDE_IMG = "./image/codau.jpg";
+const GROOM_IMG = "image/chure.jpg";
+const BRIDE_IMG = "image/codau.jpg";
 
 
 // Music - Using a royalty free sample for demo
-const MUSIC_URL = "./audio/nhac.mp3"; 
+const MUSIC_URL = "audio/nhac.mp3"; 
 
 export const WEDDING_DATA: WeddingData = {
   weddingDate: "2026-03-30T11:00:00",
@@ -62,18 +62,18 @@ export const WEDDING_DATA: WeddingData = {
     },
   },
   album: [
-    "./image/anh1.jpg",
-    "./image/anh2.jpg",
-    "./image/anh3.jpg",
-    "./image/anh4.jpg",
-    "./image/anh5.jpg",
-    "./image/anh6.jpg",
-    "./image/anh9.jpg",
-    "./image/anh10.jpg",
-    "./image/anh11.jpg",
-    "./image/anh12.jpg",
-    "./image/anh13.jpg",
-    "./image/anh14.jpg",
+    "image/anh1.jpg",
+    "image/anh2.jpg",
+    "image/anh3.jpg",
+    "image/anh4.jpg",
+    "image/anh5.jpg",
+    "image/anh6.jpg",
+    "image/anh9.jpg",
+    "image/anh10.jpg",
+    "image/anh11.jpg",
+    "image/anh12.jpg",
+    "image/anh13.jpg",
+    "image/anh14.jpg",
   ]
 };
 
