@@ -1,12 +1,12 @@
 import { WeddingData } from './types';
 
 // Images
-const GROOM_IMG = "image/chure.jpg";
-const BRIDE_IMG = "image/codau.jpg";
+const GROOM_IMG = new URL('./image/chure.jpg', import.meta.url).href;
+const BRIDE_IMG = new URL('./image/codau.jpg', import.meta.url).href;
 
 
 // Music - Using a royalty free sample for demo
-const MUSIC_URL = "audio/nhac.mp3"; 
+const MUSIC_URL = new URL('./audio/nhac.mp3', import.meta.url).href; 
 
 export const WEDDING_DATA: WeddingData = {
   weddingDate: "2026-03-30T11:00:00",
@@ -62,18 +62,15 @@ export const WEDDING_DATA: WeddingData = {
     },
   },
   album: [
-    "image/anh1.jpg",
-    "image/anh2.jpg",
-    "image/anh3.jpg",
-    "image/anh4.jpg",
-    "image/anh5.jpg",
-    "image/anh6.jpg",
-    "image/anh9.jpg",
-    "image/anh10.jpg",
-    "image/anh11.jpg",
-    "image/anh12.jpg",
-    "image/anh13.jpg",
-    "image/anh14.jpg",
+    new URL('./image/anh1.jpg', import.meta.url).href,
+    new URL('./image/anh2.jpg', import.meta.url).href,
+    new URL('./image/anh3.jpg', import.meta.url).href,
+    new URL('./image/anh4.jpg', import.meta.url).href,
+    new URL('./image/anh5.jpg', import.meta.url).href,
+    new URL('./image/anh6.jpg', import.meta.url).href,
+    new URL('./image/anh7.jpg', import.meta.url).href,
+    new URL('./image/anh8.jpg', import.meta.url).href,
+    new URL('./image/anh9.jpg', import.meta.url).href,
   ]
 };
 
