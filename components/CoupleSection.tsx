@@ -86,7 +86,7 @@ const CoupleSection: React.FC<CoupleSectionProps> = ({ groom, bride }) => {
         <div className={`border-t border-b border-rose-100 py-6 my-6 space-y-3 ${align === 'left' ? 'md:pl-0' : 'md:pr-0'}`}>
           {person.extraEvents?.map((extraEvent, index) => (
             <EventBlock
-              key={`${extraEvent.eventTitle}-${index}`}
+            
               event={extraEvent}
               title={extraEvent.eventTitle}
               align={align}

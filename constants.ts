@@ -7,7 +7,7 @@ const GROOM_QR_IMG = new URL('./image/qrchure.jpg', import.meta.url).href;
 const BRIDE_QR_IMG = new URL('./image/qrcodau.jpg', import.meta.url).href;
 
 // Music - Using a royalty free sample for demo
-const MUSIC_URL = new URL('./audio/nhac.mp3', import.meta.url).href; 
+const MUSIC_URL = new URL('./audio/SaveTik.io_7557148808237288718.mp3', import.meta.url).href; 
 
 export const WEDDING_DATA: WeddingData = {
   weddingDate: "2026-03-30T11:00:00",
