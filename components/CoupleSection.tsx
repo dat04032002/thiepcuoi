@@ -10,16 +10,6 @@ interface CoupleSectionProps {
 const CoupleSection: React.FC<CoupleSectionProps> = ({ groom, bride }) => {
   const [activeQR, setActiveQR] = useState<PersonProfile | null>(null);
 
-  // Function to generate VietQR URL
-  const getVietQRUrl = (bank: PersonProfile['bank']) => {
-    // Format: https://img.vietqr.io/image/[BANK_ID]-[ACCOUNT_NO]-[TEMPLATE].png?amount=&addInfo=[INFO]
-    const bankId = bank.bankName === "MB Bank" ? "MB" : "VCB"; // Simplified mapping for demo
-    // In a real app, use a proper Bank ID lookup or allow the user to input the 'bin'
-    // Here we assume standard names map to IDs or the user provides the correct ID in config
-    const safeBankName = bank.bankName.replace(/\s/g, ''); 
-    return `https://img.vietqr.io/image/${safeBankName}-${bank.accountNumber}-${bank.template}.png?addInfo=${encodeURIComponent(bank.qrPrompt)}&accountName=${encodeURIComponent(bank.accountName)}`;
-  };
-
   const ProfileCard = ({ person, title, align }: { person: PersonProfile, title: string, align: 'left' | 'right' }) => (
     <div className={`flex flex-col md:flex-row ${align === 'right' ? 'md:flex-row-reverse' : ''} gap-8 items-center mb-24`}>
       {/* Image Frame */}
@@ -39,8 +29,7 @@ const CoupleSection: React.FC<CoupleSectionProps> = ({ groom, bride }) => {
       <div className={`w-full md:w-1/2 text-center ${align === 'left' ? 'md:text-left' : 'md:text-right'} space-y-4`}>
         <h3 className="text-3xl font-script text-rose-500">{title}</h3>
         <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-800">{person.fullName}</h2>
-        <p className="text-stone-500 italic px-4 md:px-0">"{person.description}"</p>
-        
+       
      
         <div className="py-4 space-y-2">
            {person.parents.father?.trim() && (
@@ -113,11 +102,15 @@ const CoupleSection: React.FC<CoupleSectionProps> = ({ groom, bride }) => {
             </div>
 
             <div className="bg-gray-100 p-4 rounded-xl mb-4 flex justify-center">
-               <img 
-                src={getVietQRUrl(activeQR.bank)} 
-                alt="VietQR" 
-                className="w-full h-auto rounded-lg"
-               />
+              {activeQR.bank.qrImage ? (
+                <img 
+                  src={activeQR.bank.qrImage} 
+                  alt="QR chuyển khoản" 
+                  className="w-full h-auto rounded-lg"
+                />
+              ) : (
+                <p className="text-sm text-gray-500">Chưa cấu hình ảnh QR cho tài khoản này</p>
+              )}
             </div>
 
             <div className="space-y-3 text-sm text-gray-600">

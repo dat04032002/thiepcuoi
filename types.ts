@@ -4,6 +4,7 @@ export interface BankInfo {
   accountName: string;
   template: string; // e.g., 'compact2' for VietQR
   qrPrompt: string;
+  qrImage?: string;
 }
 
 export interface ParentInfo {
@@ -24,7 +25,7 @@ export interface PersonProfile {
   fullName: string;
   shortName: string;
   image: string;
-  description: string;
+  
   parents: ParentInfo;
   event: EventDetails;
   bank: BankInfo;

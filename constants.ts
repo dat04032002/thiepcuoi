@@ -1,9 +1,10 @@
-import { WeddingData } from './types';
+﻿import { WeddingData } from './types';
 
 // Images
 const GROOM_IMG = new URL('./image/chure.jpg', import.meta.url).href;
 const BRIDE_IMG = new URL('./image/codau.jpg', import.meta.url).href;
-
+const GROOM_QR_IMG = new URL('./image/qrchure.jpg', import.meta.url).href;
+const BRIDE_QR_IMG = new URL('./image/qrcodau.jpg', import.meta.url).href;
 
 // Music - Using a royalty free sample for demo
 const MUSIC_URL = new URL('./audio/nhac.mp3', import.meta.url).href; 
@@ -15,7 +16,7 @@ export const WEDDING_DATA: WeddingData = {
     fullName: "Lê Thực",
     shortName: "Lê Thực",
     image: GROOM_IMG,
-    description: "Chàng trai tháng 12, yêu công nghệ và thích đi phượt.",
+
     parents: {
       father: "Lê Đình Thành",
       mother: "Lê Thị Vinh",
@@ -24,15 +25,16 @@ export const WEDDING_DATA: WeddingData = {
       time: "11:00",
       dateSolar: "30/03/2026",
       dateLunar: "12/02/2026 (Bính Ngọ)",
-      locationName: "Trung tâm Tiệc cưới White Palace",
-      address: "194 Hoàng Văn Thụ, Phường 9, Phú Nhuận, TP.HCM",
-      mapLink: "https://maps.app.goo.gl/abcdef",
+      locationName: "Tư gia Nhà Trai",
+      address: "Xã Thọ Xuân, Tỉnh Thanh Hóa",
+      mapLink: "https://maps.app.goo.gl/vyNSAMWvqwc1WDUD7",
     },
     bank: {
-      bankName: "MB Bank",
-      accountNumber: "9999999999",
-      accountName: "NGUYEN THANH DAT",
+      bankName: "MSB",
+      accountNumber: "3915081991",
+      accountName: "LE DINH THUC",
       template: "compact2",
+      qrImage: GROOM_QR_IMG,
       qrPrompt: "Mừng hạnh phúc Chú Rể",
     },
   },
@@ -40,7 +42,7 @@ export const WEDDING_DATA: WeddingData = {
     fullName: "Nguyễn Nhung",
     shortName: "Nguyễn Nhung",
     image: BRIDE_IMG,
-    description: "Cô gái hay cười, yêu mèo và thích nấu ăn.",
+  
     parents: {
       father: "",
       mother: "Chu Thị Huấn",
@@ -53,11 +55,12 @@ export const WEDDING_DATA: WeddingData = {
       address: "Thôn Phú Xuân, Xã Hoằng Thành, Tỉnh Thanh Hóa",
       mapLink: "https://maps.app.goo.gl/aKZGgd6BiEwByHLD9",
     },
-    bank: {
-      bankName: "Vietcombank",
-      accountNumber: "8888888888",
-      accountName: "LE THU HA",
+     bank: {
+      bankName: "MB",
+      accountNumber: "0962561089",
+      accountName: "NGUYEN THI NHUNG",
       template: "compact2",
+      qrImage: BRIDE_QR_IMG,
       qrPrompt: "Mừng hạnh phúc Cô Dâu",
     },
   },
@@ -69,8 +72,8 @@ export const WEDDING_DATA: WeddingData = {
     new URL('./image/anh5.jpg', import.meta.url).href,
     new URL('./image/anh6.jpg', import.meta.url).href,
     new URL('./image/anh7.jpg', import.meta.url).href,
-    new URL('./image/anh8.jpg', import.meta.url).href,
-    new URL('./image/anh9.jpg', import.meta.url).href,
+    new URL('./image/anh8.jpg', import.meta.url).href
+   
   ]
 };
 
@@ -80,3 +83,5 @@ export const CONTACT_LINKS = {
   zalo: "https://zalo.me",
   tiktok: "https://tiktok.com",
 };
+
+
