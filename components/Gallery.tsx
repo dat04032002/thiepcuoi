@@ -8,6 +8,7 @@ interface GalleryProps {
 const Gallery: React.FC<GalleryProps> = ({ images }) => {
   const [shuffledImages, setShuffledImages] = useState<string[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   useEffect(() => {
     // Shuffle images on mount for random effect
@@ -15,20 +16,40 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
     setShuffledImages(shuffled);
   }, [images]);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    setIsMobile(mediaQuery.matches);
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      setIsMobile(event.matches);
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  const galleryImages = isMobile ? shuffledImages.slice(0, 6) : shuffledImages;
+
+  useEffect(() => {
+    if (lightboxIndex !== null && lightboxIndex >= galleryImages.length) {
+      setLightboxIndex(null);
+    }
+  }, [galleryImages.length, lightboxIndex]);
+
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
 
   const nextImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex + 1) % shuffledImages.length);
+      setLightboxIndex((lightboxIndex + 1) % galleryImages.length);
     }
   };
 
   const prevImage = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex - 1 + shuffledImages.length) % shuffledImages.length);
+      setLightboxIndex((lightboxIndex - 1 + galleryImages.length) % galleryImages.length);
     }
   };
 
@@ -46,7 +67,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
 
       {/* Masonry Layout */}
       <div className="columns-2 md:columns-3 lg:columns-4 gap-4 max-w-6xl mx-auto space-y-4">
-        {shuffledImages.map((src, index) => (
+        {galleryImages.map((src, index) => (
           <div 
             key={index} 
             className="break-inside-avoid relative group cursor-pointer overflow-hidden rounded-xl shadow-md"
@@ -87,7 +108,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
 
           <div className="relative max-w-full max-h-full" onClick={(e) => e.stopPropagation()}>
             <img 
-              src={shuffledImages[lightboxIndex]} 
+              src={galleryImages[lightboxIndex]} 
               alt="Lightbox" 
               className="max-h-[85vh] max-w-[90vw] object-contain rounded shadow-2xl animate-fade-in"
             />
