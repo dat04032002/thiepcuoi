@@ -63,7 +63,7 @@ export const WEDDING_DATA: WeddingData = {
       dateSolar: "28/03/2026",
       dateLunar: "10/02/2026 (Bính Ngọ)",
       locationName: "Tư gia Nhà Gái",
-      address: "Thôn Phú Xuân, Xã Hoằng Thành, Tỉnh Thanh Hóa",
+      address: "Thôn Phú Xuân, Xã Hoằng Thanh, Tỉnh Thanh Hóa",
       mapLink: "https://maps.app.goo.gl/aKZGgd6BiEwByHLD9",
     },
      bank: {
