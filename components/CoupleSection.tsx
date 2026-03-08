@@ -1,6 +1,6 @@
 ﻿import React, { useState } from 'react';
 import { MapPin, Calendar, QrCode, X, Copy } from 'lucide-react';
-import { PersonProfile } from '../types';
+import { EventDetails, PersonProfile } from '../types';
 
 interface CoupleSectionProps {
   groom: PersonProfile;
@@ -9,6 +9,49 @@ interface CoupleSectionProps {
 
 const CoupleSection: React.FC<CoupleSectionProps> = ({ groom, bride }) => {
   const [activeQR, setActiveQR] = useState<PersonProfile | null>(null);
+
+  const EventBlock = ({
+    event,
+    title,
+    align,
+    compact = false
+  }: {
+    event: EventDetails;
+    title: string;
+    align: 'left' | 'right';
+    compact?: boolean;
+  }) => (
+    <div className={`space-y-3 ${compact ? 'bg-rose-50/50 border border-rose-100 rounded-xl p-4 mt-4' : ''}`}>
+      <h5 className={`font-serif ${compact ? 'text-lg' : 'text-xl'} font-bold text-rose-600 uppercase tracking-widest`}>
+        {title}
+      </h5>
+
+      <div className={`flex items-center gap-2 text-stone-600 justify-center ${align === 'left' ? 'md:justify-start' : 'md:justify-end'}`}>
+        <Calendar size={18} className="text-rose-400" />
+        <span>{event.time} | {event.dateSolar}</span>
+      </div>
+
+      <div className={`flex items-center gap-2 text-stone-500 text-sm justify-center ${align === 'left' ? 'md:justify-start' : 'md:justify-end'}`}>
+        <span>(Âm lịch: {event.dateLunar})</span>
+      </div>
+
+      <div className={`flex items-start gap-2 text-stone-600 justify-center ${align === 'left' ? 'md:justify-start' : 'md:justify-end'}`}>
+        <MapPin size={18} className="text-rose-400 mt-1 flex-shrink-0" />
+        <span className="max-w-xs">{event.locationName} <br/> <span className="text-sm text-stone-500">{event.address}</span></span>
+      </div>
+
+      <div className={`flex gap-3 mt-3 justify-center ${align === 'left' ? 'md:justify-start' : 'md:justify-end'}`}>
+        <a 
+          href={event.mapLink} 
+          target="_blank" 
+          rel="noreferrer"
+          className="px-4 py-2 bg-white border border-rose-200 text-rose-500 rounded-full hover:bg-rose-50 transition-colors text-sm font-bold shadow-sm"
+        >
+          Xem Bản Đồ
+        </a>
+      </div>
+    </div>
+  );
 
   const ProfileCard = ({ person, title, align }: { person: PersonProfile, title: string, align: 'left' | 'right' }) => (
     <div className={`flex flex-col md:flex-row ${align === 'right' ? 'md:flex-row-reverse' : ''} gap-8 items-center mb-24`}>
@@ -41,39 +84,30 @@ const CoupleSection: React.FC<CoupleSectionProps> = ({ groom, bride }) => {
 
 
         <div className={`border-t border-b border-rose-100 py-6 my-6 space-y-3 ${align === 'left' ? 'md:pl-0' : 'md:pr-0'}`}>
-          <h4 className="font-serif text-xl font-bold text-rose-600 mb-2 uppercase tracking-widest">
-            {title === "Chú Rể" ? "Lễ Thành Hôn" : "Lễ Ăn Hỏi"}
-          </h4>
-          
-          <div className={`flex items-center gap-2 text-stone-600 justify-center ${align === 'left' ? 'md:justify-start' : 'md:justify-end'}`}>
-            <Calendar size={18} className="text-rose-400" />
-            <span>{person.event.time} | {person.event.dateSolar}</span>
-          </div>
-          <div className={`flex items-center gap-2 text-stone-500 text-sm justify-center ${align === 'left' ? 'md:justify-start' : 'md:justify-end'}`}>
-            <span>(Âm lịch: {person.event.dateLunar})</span>
-          </div>
-          
-          <div className={`flex items-start gap-2 text-stone-600 justify-center ${align === 'left' ? 'md:justify-start' : 'md:justify-end'}`}>
-            <MapPin size={18} className="text-rose-400 mt-1 flex-shrink-0" />
-            <span className="max-w-xs">{person.event.locationName} <br/> <span className="text-sm text-stone-500">{person.event.address}</span></span>
-          </div>
+          {person.extraEvents?.map((extraEvent, index) => (
+            <EventBlock
+              key={`${extraEvent.eventTitle}-${index}`}
+              event={extraEvent}
+              title={extraEvent.eventTitle}
+              align={align}
+              compact
+            />
+          ))}
+
+          <EventBlock
+            event={person.event}
+            title={title === "Chú Rể" ? "Lễ Thành Hôn" : "Lễ Ăn Hỏi"}
+            align={align}
+          />
 
           <div className={`flex gap-3 mt-4 justify-center ${align === 'left' ? 'md:justify-start' : 'md:justify-end'}`}>
-             <a 
-                href={person.event.mapLink} 
-                target="_blank" 
-                rel="noreferrer"
-                className="px-4 py-2 bg-white border border-rose-200 text-rose-500 rounded-full hover:bg-rose-50 transition-colors text-sm font-bold shadow-sm"
-              >
-                Xem Bản Đồ
-              </a>
-              <button 
-                onClick={() => setActiveQR(person)}
-                className="px-4 py-2 bg-rose-500 text-white rounded-full hover:bg-rose-600 transition-colors text-sm font-bold shadow-md flex items-center gap-2"
-              >
-                <QrCode size={16} />
-                Mừng Cưới
-              </button>
+            <button 
+              onClick={() => setActiveQR(person)}
+              className="px-4 py-2 bg-rose-500 text-white rounded-full hover:bg-rose-600 transition-colors text-sm font-bold shadow-md flex items-center gap-2"
+            >
+              <QrCode size={16} />
+              Mừng Cưới
+            </button>
           </div>
         </div>
       </div>

@@ -21,6 +21,10 @@ export interface EventDetails {
   mapLink: string;
 }
 
+export interface ExtraEventDetails extends EventDetails {
+  eventTitle: string;
+}
+
 export interface PersonProfile {
   fullName: string;
   shortName: string;
@@ -28,6 +32,7 @@ export interface PersonProfile {
   
   parents: ParentInfo;
   event: EventDetails;
+  extraEvents?: ExtraEventDetails[];
   bank: BankInfo;
 }
 

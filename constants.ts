@@ -29,6 +29,17 @@ export const WEDDING_DATA: WeddingData = {
       address: "Xã Thọ Xuân, Tỉnh Thanh Hóa",
       mapLink: "https://maps.app.goo.gl/vyNSAMWvqwc1WDUD7",
     },
+    extraEvents: [
+      {
+        eventTitle: "Lễ Mời Cơm Thân Mật",
+        time: "16:00",
+        dateSolar: "29/03/2026",
+        dateLunar: "11/02/2026 (Bính Ngọ)",
+        locationName: "Tư gia Nhà Trai",
+        address: "Xã Thọ Xuân, Tỉnh Thanh Hóa",
+        mapLink: "https://maps.app.goo.gl/vyNSAMWvqwc1WDUD7",
+      }
+    ],
     bank: {
       bankName: "MSB",
       accountNumber: "3915081991",
