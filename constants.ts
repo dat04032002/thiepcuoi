@@ -26,7 +26,7 @@ export const WEDDING_DATA: WeddingData = {
       dateSolar: "30/03/2026",
       dateLunar: "12/02/2026 (Bính Ngọ)",
       locationName: "Tư gia Nhà Trai",
-      address: "Xã Thọ Xuân, Tỉnh Thanh Hóa",
+      address: "Khu phố Đồng Thôn, Xã Thọ Xuân, Tỉnh Thanh Hóa",
       mapLink: "https://maps.app.goo.gl/vyNSAMWvqwc1WDUD7",
     },
     extraEvents: [
@@ -36,7 +36,7 @@ export const WEDDING_DATA: WeddingData = {
         dateSolar: "29/03/2026",
         dateLunar: "11/02/2026 (Bính Ngọ)",
         locationName: "Tư gia Nhà Trai",
-        address: "Xã Thọ Xuân, Tỉnh Thanh Hóa",
+        address: "Khu phố Đồng Thôn, Xã Thọ Xuân, Tỉnh Thanh Hóa",
         mapLink: "https://maps.app.goo.gl/vyNSAMWvqwc1WDUD7",
       }
     ],
